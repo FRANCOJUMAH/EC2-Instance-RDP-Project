@@ -5,7 +5,8 @@
 
 ![image](https://github.com/FRANCOJUMAH/Creating-an-AWS-EC2-Instance-/blob/7f19c7ebde1540ea02377bb90e4616605f546a7e/resources/ec2.png)
 
-- **This project involves launching a Windows EC2 instance, enabling Remote Desktop Protocol (RDP) access via security groups, and configuring Amazon SNS to send notifications. You will create an RDP server, configure network security, and use SNS to monitor or alert on instance state changes (e.g., stopping/starting) for a complete, managed remote environment**
+- **This project involves launching a Windows EC2 instance, enabling Remote Desktop Protocol (RDP) access via security groups, and configuring Amazon SNS to send notifications.**
+-  _Create an RDP server, configure network security, and use SNS to monitor or alert on instance state changes (e.g., stopping/starting) for a complete, managed remote environment_
 
 ## 📝 Project Steps
 
@@ -60,7 +61,9 @@
   - Create Alarm: Navigate to Cloudwatch, click "Alarms" -> "Create alarm" 
   -  Specify the metric (CPUUtilization) set to a threshold of greater than 0.01 within an average period of 10 seconds
   -  Configure the actions (step 3): state - in alarm, send a notification to the created SNS topic _(tuko kadi)_
+    
   ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/46ed1fe3c14656c741fb1c2f987be07e2db1f974/images/Configure%20actions.png)
+
   -  Add alarm name(step 4) - (_tuko-kadi-alarm_). then proceed to create the alarm
   -  Confirm the alarm is created successfully with the SNS topic, alarm, metric and threshold set correctly.
      ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/ea5bcca1033e009ab3b061cdc8ae458600cb4ee3/images/alarm%20created.png)
@@ -68,11 +71,15 @@
   6. **Verify and Test**
      - Verify and test that the alarm is working.
      - To achieve this, reboot the ec2 instance and wait for the alarm notification on the phone via sms
+       
+                       **SNS alerts were successfully delivered through SMS as seen in the image below**
+        ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/d6a0b15ef24ea474da4cc0979a1dc6550a02595f/images/sms-confirmation.jpg)
 
-    ** Summary of AWS Services Used**
-     EC2: Hosting the Windows RDP server.
-      Security Groups: Acting as a firewall to allow RDP traffic on port 3389.
-     SNS: Sending sms alerts for instance state changes.
+     
+    **Summary of AWS Services Used**
+     - EC2: Hosting the Windows RDP server.
+     - Security Groups: Acting as a firewall to allow RDP traffic on port 3389.
+     - SNS: Sending sms alerts for instance state changes.
   
     
 
