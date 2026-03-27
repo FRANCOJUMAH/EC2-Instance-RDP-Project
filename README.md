@@ -68,7 +68,11 @@
   6. **Verify and Test**
      - Verify and test that the alarm is working.
      - To achieve this, reboot the ec2 instance and wait for the alarm notification on the phone via sms
-     
+
+    ** Summary of AWS Services Used**
+     EC2: Hosting the Windows RDP server.
+      Security Groups: Acting as a firewall to allow RDP traffic on port 3389.
+     SNS: Sending sms alerts for instance state changes.
   
     
 
