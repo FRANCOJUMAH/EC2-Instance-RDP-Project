@@ -19,7 +19,6 @@
    - Under Network Settings, ensure "Auto-assign public IP" is enabled
      
 2. **Configure Security Group for RDP**
-   - After successful login. Go to console home where you get to see different AWS resources listed : VPC, IAM, EC2, RDS as shown in the image below
    - Create a new Security Group.
    - Add an inbound rule: Type: RDP, Protocol: TCP, Port Range: 3389, Source: "Anywhere" (0.0.0.0/0) for temporary testing.
    - Launch the instance.
@@ -37,15 +36,42 @@
    
  ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/023afc66722fc36bbbbcf9b389f133511ed28e19/images/rdp%20file.png)
  
-   - Double click the downloaded rdp file (tuko-kadi) and use the decrypted password to login
+   - Double click the downloaded rdp file _(tuko-kadi)_ and use the decrypted password to login
   ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/b2a7801b8f47e5ce1fc07a06b7a6d0efbcedee6c/images/Remote%20connection.png)
   
   - Now we have successfully connected to our ec2 instance which is running windows server 2025
   ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/b2a7801b8f47e5ce1fc07a06b7a6d0efbcedee6c/images/virtual%20WINserver.png)
 
-  - You now realize that the public and private IP address of the remote server matches that of the ec2 instance created initially.
+  - You now realize that the _public-IP (13.220.42.226)_ and _private-IP (172.31.10.27)_ address of the remote server matches that of the ec2 instance created initially.
 ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/3e6a06b2893c0cd21f3f3cf4a070549cd76abc1c/images/ip%20addr1.png)
 ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/3e6a06b2893c0cd21f3f3cf4a070549cd76abc1c/images/ip%20addr2.png)
-4. **Specify Instance name & type, AMI Image, Keypair**
-   - Here you get to see if there are any running instances, key pairs, security groups, load balancers, Auto Scaling groups etc. 
-   - Click on launch instance to create a new EC2 instance.
+
+4. **Enable SNS Notifications**
+ - Create Topic: Navigate to Amazon SNS, click "Topics" -> "Create topic" (Standard type). Name it _(tuko-kadi)_ and create the topic.
+     ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/25bb7229c72f024dd68063cef500c33d75445435/images/create%20SNS%20topic.png)
+
+ - Create Subscription: Within the topic, create a subscription, choose "sms" as the protocol, and enter your number as the endpoint for receiving SNS notifications
+     ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/25bb7229c72f024dd68063cef500c33d75445435/images/create%20subscription.png)
+     
+ - The SNS topic _(tuko-kadi)_ is now created with SMS as the subscription as shown below
+     ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/25bb7229c72f024dd68063cef500c33d75445435/images/SNS%20topic.png)
+     
+ 5. **Create Alarm**
+  - Create Alarm: Navigate to Cloudwatch, click "Alarms" -> "Create alarm" 
+  -  Specify the metric (CPUUtilization) set to a threshold of greater than 0.01 within an average period of 10 seconds
+  -  Configure the actions (step 3): state - in alarm, send a notification to the created SNS topic _(tuko kadi)_
+  ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/46ed1fe3c14656c741fb1c2f987be07e2db1f974/images/Configure%20actions.png)
+  -  Add alarm name(step 4) - (_tuko-kadi-alarm_). then proceed to create the alarm
+  -  Confirm the alarm is created successfully with the SNS topic, alarm, metric and threshold set correctly.
+     ![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/ea5bcca1033e009ab3b061cdc8ae458600cb4ee3/images/alarm%20created.png)
+
+  6. **Verify and Test**
+     - Verify and test that the alarm is working.
+     - To achieve this, reboot the ec2 instance and wait for the alarm notification on the phone via sms
+     
+  
+    
+
+
+
+  
