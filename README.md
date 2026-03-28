@@ -3,9 +3,9 @@
 
 ## 🎯 Task Overview
 
-![image](https://github.com/FRANCOJUMAH/Creating-an-AWS-EC2-Instance-/blob/7f19c7ebde1540ea02377bb90e4616605f546a7e/resources/ec2.png)
+![image](https://github.com/FRANCOJUMAH/EC2-Instance-RDP-Project/blob/a28a5e4d5e8199f5405c1114de3e82c93bcb1a18/images/ec2%20rdp.png)
 
-- **This project involves launching a Windows EC2 instance, enabling Remote Desktop Protocol (RDP) access via security groups, and configuring Amazon SNS to send notifications.**
+- **This project entails launching a Windows EC2 instance, enabling Remote Desktop Protocol (RDP) access via security groups, and configuring Amazon Cloudwatch for Monitoring & Amazon SNS to send notifications.**
 -  _Create an RDP server, configure network security, and use SNS to monitor or alert on instance state changes (e.g., stopping/starting) for a complete, managed remote environment_
 
 ## 📝 Project Steps
@@ -79,6 +79,7 @@
     **Summary of AWS Services Used**
      - EC2: Hosting the Windows RDP server.
      - Security Groups: Acting as a firewall to allow RDP traffic on port 3389.
+     - Amazon Cloudwatch : Create alarms based on the defined metrics
      - SNS: Sending sms alerts for instance state changes.
   
     
